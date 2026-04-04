@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stashlink/models/list_model.dart';
 import 'package:stashlink/widgets/add_link_dialog.dart';
+import 'package:stashlink/widgets/link_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,16 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: ListView.builder(
         itemCount: items.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(
-              items[index].title,
-            ),
-            subtitle: Text(
-              items[index].url,
-            ),
-          );
-        },
+        itemBuilder: (context, index) => LinkCard(
+          link: items[index],
+        ),
       ),
 
       floatingActionButton: FloatingActionButton(

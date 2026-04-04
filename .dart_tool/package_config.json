@@ -158,6 +158,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "receive_sharing_intent",
+      "rootUri": "file:///C:/Users/VedantSingh/AppData/Local/Pub/Cache/hosted/pub.dev/receive_sharing_intent-1.8.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "shared_preferences",
       "rootUri": "file:///C:/Users/VedantSingh/AppData/Local/Pub/Cache/hosted/pub.dev/shared_preferences-2.5.5",
       "packageUri": "lib/",

@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
             await StorageService.addLink(result);
 
             setState(() {
-              items.add(result); // 🔥 THIS was missing
+              items.add(result);
             });
           }
         },

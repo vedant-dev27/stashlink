@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stashlink/models/list_model.dart';
 import 'package:stashlink/widgets/add_link_dialog.dart';
 import 'package:stashlink/widgets/link_card.dart';
+import 'package:stashlink/services/storage_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +13,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<ListModel> items = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLinks();
+  }
+
+  Future<void> _loadLinks() async {
+    final loaded = await StorageService.loadLink();
+    setState(() => items = loaded);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +62,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) => LinkCard(
+          onDelete: () async {
+            await StorageService.delLink(items[index].url);
+            setState(() {
+              items.removeAt(index);
+            });
+          },
           link: items[index],
         ),
       ),
@@ -62,13 +80,11 @@ class _HomeScreenState extends State<HomeScreen> {
           );
 
           if (result != null) {
-            setState(
-              () {
-                items.add(
-                  result,
-                );
-              },
-            );
+            await StorageService.addLink(result);
+
+            setState(() {
+              items.add(result); // 🔥 THIS was missing
+            });
           }
         },
         child: const Icon(

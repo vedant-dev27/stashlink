@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:stashlink/models/list_model.dart';
+import 'package:stashlink/widgets/add_link_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,6 +10,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<ListModel> items = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +46,37 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(width: 4),
         ],
       ),
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(
+              items[index].title,
+            ),
+            subtitle: Text(
+              items[index].url,
+            ),
+          );
+        },
+      ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          final result = await showDialog<ListModel>(
+            context: context,
+            builder: (context) => const AddLinkDialog(),
+          );
+
+          if (result != null) {
+            setState(
+              () {
+                items.add(
+                  result,
+                );
+              },
+            );
+          }
+        },
         child: const Icon(
           Icons.add_rounded,
         ),

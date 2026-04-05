@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1098314596699",
+    "project_id": "stashlink-de165",
+    "storage_bucket": "stashlink-de165.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098314596699:android:4912a3e9b7129207901a7e",
+        "android_client_info": {
+          "package_name": "com.starrtek.stashlink"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098314596699-fajvnpqv218pjgng0d4uthial1e0hf68.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.starrtek.stashlink",
+            "certificate_hash": "ea11a9055214ca1ea685be4c191689b10eb7b338"
+          }
+        },
+        {
+          "client_id": "1098314596699-enkmm36md1rrvfr2t24l2ue1qslc4c2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEdu9Z-E0r5MifVy3EPCt1JlJOveE3PK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098314596699-enkmm36md1rrvfr2t24l2ue1qslc4c2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

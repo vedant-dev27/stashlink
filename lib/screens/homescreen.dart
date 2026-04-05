@@ -5,6 +5,7 @@ import 'package:stashlink/services/share_service.dart';
 import 'package:stashlink/services/storage_service.dart';
 import 'package:stashlink/widgets/add_link_dialog.dart';
 import 'package:stashlink/widgets/link_card.dart';
+import 'package:stashlink/screens/settings.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     _loadLinks();
-    // Wait one frame so the widget tree is fully built before showing dialog
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ShareService.listen((url) async {
         if (!mounted) return;
@@ -95,7 +95,14 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: const Icon(Icons.settings_outlined),
             tooltip: 'Settings',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (_) => const SettingsPage(),
+                ),
+              );
+            },
           ),
           const SizedBox(width: 4),
         ],

@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:stashlink/screens.dart/homescreen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:stashlink/firebase_options.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:stashlink/screens/homescreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await GoogleSignIn.instance.initialize();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

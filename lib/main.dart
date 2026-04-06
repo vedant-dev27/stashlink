@@ -33,14 +33,17 @@ class MyApp extends StatelessWidget {
       title: 'StashLink',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C63FF),
+          seedColor: const Color(
+            0xFF6C63FF,
+          ),
         ),
         useMaterial3: true,
-        fontFamily: 'Inter', // swap to whatever font you add
       ),
       darkTheme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF6C63FF),
+          seedColor: const Color(
+            0xFF6C63FF,
+          ),
           brightness: Brightness.dark,
         ),
         useMaterial3: true,

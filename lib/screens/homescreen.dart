@@ -5,7 +5,7 @@ import 'package:stashlink/services/share_service.dart';
 import 'package:stashlink/services/storage_service.dart';
 import 'package:stashlink/widgets/add_link_dialog.dart';
 import 'package:stashlink/widgets/link_card.dart';
-import 'package:stashlink/screens/settings.dart';
+import 'package:stashlink/services/launch_link.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -86,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
             letterSpacing: -0.5,
           ),
         ),
-        actions: [
+        /* actions: [
           IconButton(
             icon: const Icon(Icons.search_rounded),
             tooltip: 'Search',
@@ -105,20 +105,24 @@ class _HomeScreenState extends State<HomeScreen> {
             },
           ),
           const SizedBox(width: 4),
-        ],
+        ],*/
       ),
       body: _buildBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: _openAddDialog,
         tooltip: 'Add bookmark',
-        child: const Icon(Icons.add_rounded),
+        child: const Icon(
+          Icons.add_rounded,
+        ),
       ),
     );
   }
 
   Widget _buildBody() {
     if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     if (_items.isEmpty) {
@@ -147,6 +151,11 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.only(bottom: 88),
       itemCount: _items.length,
       itemBuilder: (context, index) => LinkCard(
+        onTap: () {
+          openUrl(
+            _items[index].url,
+          );
+        },
         link: _items[index],
         onDelete: () => _deleteLink(index),
       ),
